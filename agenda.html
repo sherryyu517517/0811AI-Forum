@@ -28,11 +28,50 @@ body{
   color:var(--text);
   font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   background:
-    radial-gradient(circle at 12% 8%,rgba(67,93,255,.28),transparent 32rem),
-    radial-gradient(circle at 88% 28%,rgba(55,228,244,.13),transparent 30rem),
-    linear-gradient(180deg,var(--navy),var(--navy2) 58%,#020718);
+    radial-gradient(circle at 18% 12%, rgba(116,225,255,.10), transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(88,156,255,.09), transparent 22%),
+    linear-gradient(180deg,
+      #071a45 0%,
+      #0b2a63 26%,
+      #123b7a 56%,
+      #0b2d63 100%);
   min-height:100vh;
   overflow-x:hidden;
+  position:relative;
+}
+
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(116deg, transparent 0 14%, rgba(133,224,255,.055) 14.15% 14.35%, transparent 14.5% 100%),
+    linear-gradient(64deg, transparent 0 31%, rgba(141,196,255,.045) 31.15% 31.35%, transparent 31.5% 100%),
+    linear-gradient(116deg, transparent 0 69%, rgba(103,231,245,.045) 69.15% 69.35%, transparent 69.5% 100%),
+    radial-gradient(ellipse at 50% 22%, rgba(255,255,255,.075), transparent 52%);
+  opacity:.9;
+}
+body::after{
+  content:"";
+  position:fixed;
+  left:-12%;
+  right:-12%;
+  bottom:-235px;
+  height:430px;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50% 50% 0 0 / 100% 100% 0 0;
+  border-top:2px solid rgba(115,226,255,.32);
+  box-shadow:
+    0 -10px 35px rgba(79,186,255,.20),
+    0 -30px 90px rgba(69,105,255,.16),
+    inset 0 16px 42px rgba(68,195,255,.07);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(107,224,255,.10) 0%, rgba(73,126,255,.08) 26%, transparent 64%);
+  transform:rotate(-1.2deg);
 }
 
 img{display:block;max-width:100%}
@@ -50,7 +89,7 @@ a{color:inherit}
 
 .site-header{
   position:sticky;top:0;z-index:90;height:var(--header);
-  background:rgba(3,9,31,.82);
+  background:linear-gradient(180deg,#041634 0%,#08224F 100%);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,.08)
 }
@@ -165,7 +204,12 @@ a{color:inherit}
 }
 
 .hero{
-  position:relative;padding:86px 0 70px;overflow:hidden
+  position:relative;
+  padding:86px 0 70px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0)),
+    radial-gradient(ellipse at 50% 10%,rgba(111,229,247,.08),transparent 58%);
 }
 .hero::before{
   content:"";
@@ -203,32 +247,36 @@ a{color:inherit}
   position:relative;
   padding:24px 0 104px;
   overflow:hidden;
+  isolation:isolate;
 }
 .agenda-section::before{
   content:"";
   position:absolute;
-  left:-12%;
-  right:-12%;
-  top:12%;
-  height:230px;
+  left:-14%;
+  right:-14%;
+  top:8%;
+  height:250px;
+  z-index:-1;
   border-radius:50%;
-  border-top:2px solid rgba(96,204,255,.22);
+  border-top:1.5px solid rgba(115,225,255,.22);
   box-shadow:
-    0 -10px 34px rgba(60,129,255,.12),
-    0 -2px 18px rgba(90,229,255,.09);
-  transform:rotate(-3deg);
+    0 -8px 28px rgba(66,174,255,.12),
+    0 -24px 70px rgba(83,104,255,.08);
+  transform:rotate(-2.3deg);
   pointer-events:none;
 }
 .agenda-section::after{
   content:"";
   position:absolute;
-  left:-8%;
-  right:-8%;
-  bottom:4%;
-  height:190px;
+  left:-10%;
+  right:-10%;
+  bottom:2%;
+  height:210px;
+  z-index:-1;
   border-radius:50%;
-  border-top:1px solid rgba(89,226,255,.16);
-  transform:rotate(2deg);
+  border-top:1px solid rgba(142,234,255,.16);
+  box-shadow:0 -8px 30px rgba(75,168,255,.08);
+  transform:rotate(1.5deg);
   pointer-events:none;
 }
 .agenda-head{
@@ -267,7 +315,9 @@ a{color:inherit}
   border-radius:22px;
   background:
     linear-gradient(145deg,rgba(12,38,106,.86),rgba(5,17,56,.94));
-  box-shadow:var(--shadow);
+  box-shadow:
+    0 24px 62px rgba(4,12,48,.34),
+    0 7px 22px rgba(57,119,214,.10);
   transition:.28s ease
 }
 .agenda-card::before{
@@ -516,7 +566,7 @@ a{color:inherit}
           
       <div class="speaker-block">
         <span class="speaker-label"></span>
-        <div class="speaker-text">財團法人資訊工業策進會 黃仲銘董事長<br>奇美醫療財團法人奇美醫院 林宏榮院長</div>
+        <div class="speaker-text">奇美醫療財團法人奇美醫院 林宏榮院長<br>財團法人資訊工業策進會 黃仲銘董事長</div>
       </div>
         </div>
       </div>
