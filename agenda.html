@@ -198,7 +198,7 @@ a{color:inherit}
   background:rgba(255,255,255,.05)
 }
 .menu-btn{
-  display:none;width:46px;height:46px;border-radius:13px;
+  display:none;width:76px;height:46px;border-radius:13px;
   border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.06);color:#fff;font-size:1.2rem
 }
@@ -533,7 +533,7 @@ a{color:inherit}
       <a href="https://forms.cloud.microsoft/r/TLJWZ570Xu" target="_blank" rel="noopener noreferrer">即時提問</a>
       <a href="https://forms.cloud.microsoft/r/yjrtRR4Qs7" target="_blank" rel="noopener noreferrer">滿意度調查</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="開啟選單">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="開啟選單">☰ 選單</button>
   </div>
 </header>
 
@@ -721,11 +721,11 @@ const menuBtn=document.getElementById('menuBtn');
 const navLinks=document.getElementById('navLinks');
 menuBtn.addEventListener('click',()=>{
   navLinks.classList.toggle('open');
-  menuBtn.textContent=navLinks.classList.contains('open')?'✕':'☰';
+  menuBtn.textContent=navLinks.classList.contains('open')?'✕':'☰ 選單';
 });
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   navLinks.classList.remove('open');
-  menuBtn.textContent='☰';
+  menuBtn.textContent='☰ 選單';
 }));
 
 const observer=new IntersectionObserver(entries=>{
