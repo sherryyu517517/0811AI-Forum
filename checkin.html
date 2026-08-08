@@ -3,129 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>報到系統 | 佳里奇美醫院114年度餐敘</title>
+<title>簽到入場｜智慧人才培育高峰論壇</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body { font-family:'Noto Sans TC',sans-serif; background: linear-gradient(135deg,#E6E6FA,#FFFFFF); margin:0; padding:0; color:#000; overflow-x:hidden; position:relative; }
-.bubble { position:absolute; border-radius:50%; opacity:0.5; pointer-events:none; z-index:0; }
-
-.navbar { background-color: #4B0082 !important;background: rgba(10,10,10,0.85); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,0.1); }
-.navbar-brand, .nav-link { color:#FFFFFF !important; font-weight:700; }
-.nav-link:hover, .nav-link.active { color:#87CEFA !important; }
-
-h2 { color:#4B0082; font-weight:600; text-shadow:1px 1px 3px rgba(0,0,0,0.2); }
-
-.card { background: rgba(255,255,255,0.9); border-radius:15px; padding:25px; box-shadow:0 10px 25px rgba(0,0,0,0.3); margin-bottom:40px; position:relative; z-index:1; }
-
-.refresh-btn { background: linear-gradient(90deg,#4B0082,#7B68EE); color:#fff; border:none; font-weight:600; border-radius:10px; padding:10px 25px; transition:0.3s; }
-.refresh-btn:hover { background: linear-gradient(90deg,#7B68EE,#9370DB); transform:scale(1.05); }
-
-.timer { font-size:0.9rem; color:#4B0082; }
-
-.table-responsive { max-height: 600px; overflow-y: auto; }
-#checkinTable thead.table-dark th { background-color: #4B0082 !important; color: #FFFFFF !important; position: sticky; top: 0; z-index: 2; }
-#checkinTable tbody tr:nth-child(even) { background-color: #F3E8FF; }
-#checkinTable tbody tr:nth-child(odd) { background-color: #FFFFFF; }
-
-.checked td { font-weight:700 !important; color:#1E90FF !important; background-color:#EAF6FF !important; }
-
-.filter-input { width: 100%; font-size: 0.85rem; padding: 3px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
-
-.small-text { font-size: 0.85rem; color: #555; }
-
-#stats { font-size:1rem; font-weight:600; margin-bottom:15px; text-align:center; color:#4B0082; }
-
-#checkinTable th:first-child,
-#checkinTable th:nth-child(6),
-#checkinTable td:first-child,
-#checkinTable td:nth-child(6) { vertical-align: middle !important; text-align: center !important; white-space: nowrap; }
-
-#checkinTable th:first-child, #checkinTable td:first-child { width: 60px; }
-#checkinTable th:nth-child(6), #checkinTable td:nth-child(6) { width: 160px; }
-
-footer { text-align:center; color:#555; background: rgba(255,255,255,0.1); padding:15px; font-size:0.95rem; margin-top:60px; }
-
-/* ====== 翻牌倒數 CSS ====== */
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(15px) brightness(0.6);
-  background: rgba(255, 255, 255, 0.1);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  flex-direction: column;
-  color: #fff;
-  text-align:center;
+:root{
+  --navy:#03091f;--navy2:#07194a;--cyan:#52e6f3;--cyan-soft:#bafaff;
+  --blue:#5f7cff;--gold:#ffd178;--text:#f4f8ff;--muted:#b8c6e8;
+  --line:rgba(116,229,250,.22);--shadow:0 26px 70px rgba(0,0,0,.34);--header:80px;
 }
-.flip-clock { display: flex; gap: 15px; margin-top:20px; }
-.flip-unit {
-  width: 80px;
-  height: 110px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
-  overflow:hidden;
-  flex-direction: column;
-  perspective: 400px;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  margin:0;color:var(--text);min-height:100vh;overflow-x:hidden;position:relative;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(116,225,255,.10),transparent 24%),
+    radial-gradient(circle at 82% 16%,rgba(88,156,255,.09),transparent 22%),
+    linear-gradient(180deg,#071a45 0%,#0b2a63 26%,#123b7a 56%,#0b2d63 100%);
 }
-.flip-unit .number {
-  display:block;
-  animation: flip 0.7s ease forwards;
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(116deg,transparent 0 14%,rgba(133,224,255,.055) 14.15% 14.35%,transparent 14.5% 100%),
+    linear-gradient(64deg,transparent 0 31%,rgba(141,196,255,.045) 31.15% 31.35%,transparent 31.5% 100%),
+    linear-gradient(116deg,transparent 0 69%,rgba(103,231,245,.045) 69.15% 69.35%,transparent 69.5% 100%),
+    radial-gradient(ellipse at 50% 22%,rgba(255,255,255,.075),transparent 52%);
 }
-.flip-unit .label { font-size: 1rem; margin-top: 5px; color:#fff; }
-@keyframes flip { 0% { transform: rotateX(90deg); opacity:0; } 100% { transform: rotateX(0deg); opacity:1; } }
-
+body::after{
+  content:"";position:fixed;left:-12%;right:-12%;bottom:-235px;height:430px;z-index:-1;
+  pointer-events:none;border-radius:50% 50% 0 0 / 100% 100% 0 0;
+  border-top:2px solid rgba(115,226,255,.32);
+  box-shadow:0 -10px 35px rgba(79,186,255,.20),0 -30px 90px rgba(69,105,255,.16);
+  background:radial-gradient(ellipse at 50% 0%,rgba(107,224,255,.10),rgba(73,126,255,.08) 26%,transparent 64%);
+}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+.announcement{
+  position:relative;z-index:100;text-align:center;padding:8px 16px;
+  background:linear-gradient(90deg,#1859bd,#12a6b8);
+  font-size:.9rem;font-weight:800;letter-spacing:.04em
+}
+.announcement strong{color:#fff0a8}
+.site-header{
+  position:sticky;top:0;z-index:90;height:var(--header);
+  background:linear-gradient(180deg,#041634 0%,#08224f 100%);
+  backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)
+}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand-title-only{display:flex;align-items:center;min-width:0;text-decoration:none}
+.forum-brand{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.forum-brand-title{display:block;white-space:nowrap;color:#fff;font-size:clamp(1.16rem,1.8vw,1.58rem);font-weight:900;letter-spacing:.075em}
+.forum-brand-line{display:block;width:min(100%,320px);height:2px;margin-top:8px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,.92),#75edf5 52%,rgba(82,230,243,0))}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{position:relative;text-decoration:none;color:#dce7ff;padding:9px 11px;border-radius:999px;font-size:.9rem;font-weight:760;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{background:rgba(82,230,243,.12);color:#95f7ff}
+.menu-btn{display:none;width:46px;height:46px;border-radius:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font-size:1.2rem}
+.checkin-hero{padding:72px 0 34px;text-align:center}
+.hero-kicker{display:inline-flex;color:#c8fbff;font-weight:850;letter-spacing:.10em;padding:8px 15px;border-radius:999px;border:1px solid rgba(96,232,249,.32);background:rgba(10,34,96,.52)}
+.checkin-hero h1{margin:20px 0 10px;font-size:clamp(2.25rem,5vw,4rem);font-weight:900;letter-spacing:.05em;text-shadow:0 14px 38px rgba(0,0,0,.38)}
+.checkin-hero p{color:#c6d3ef;font-size:1.05rem;margin:0}
+main.container{padding-top:0!important;padding-bottom:72px}
+h2{color:#fff;font-weight:900;text-shadow:none}
+.text-dark{color:#c8d7f5!important}
+.card{
+  color:#edf5ff;background:linear-gradient(145deg,rgba(12,38,106,.88),rgba(5,17,56,.96));
+  border:1px solid var(--line);border-radius:22px;padding:25px;
+  box-shadow:0 24px 62px rgba(4,12,48,.34),0 7px 22px rgba(57,119,214,.10);
+  margin-bottom:40px;position:relative;z-index:1;overflow:hidden
+}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--cyan),var(--blue))}
+.form-label{color:#eaf4ff;font-weight:800}
+.credit-alert{max-width:900px;margin:0 auto 28px;padding:18px 22px;border-radius:16px;background:rgba(255,255,255,.09);border:1px solid rgba(255,209,120,.35);line-height:1.9;color:#eef6ff}
+.credit-alert .paper{color:#ffd178;font-weight:900}
+.credit-alert .online{color:#7df4ff;font-weight:900}
+.credit-question{padding:16px;border-radius:14px;background:rgba(82,230,243,.07);border:1px solid rgba(82,230,243,.20)}
+.credit-options{display:grid;gap:10px;margin-top:10px}
+.credit-option{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.06);cursor:pointer}
+.credit-option input{margin-top:.35rem}
+#licenseField{display:none}
+.form-control,.form-select{
+  background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;padding:11px 13px;color:#14264c
+}
+.form-control:focus{border-color:#76edf6;box-shadow:0 0 0 .2rem rgba(82,230,243,.15)}
+.refresh-btn{
+  background:linear-gradient(90deg,#49e3ef,#6b82ff);color:#06113c;border:none;
+  font-weight:900;border-radius:12px;padding:11px 22px;transition:.22s ease
+}
+.refresh-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.timer{font-size:.9rem;color:#bafaff}
+#stats{
+  max-width:1040px;margin:0 auto 16px;padding:14px 18px;border-radius:14px;text-align:center;
+  color:#fff0a8;font-weight:850;background:rgba(255,255,255,.055);border:1px solid rgba(255,209,120,.18)
+}
+.table-responsive{max-height:600px;overflow:auto;position:relative;border-radius:15px}
+#checkinTable{margin-bottom:0}
+#checkinTable thead.table-dark th{
+  background:#061b4b!important;color:#fff!important;position:sticky;top:0;z-index:6;
+  border-color:rgba(255,255,255,.10);vertical-align:middle
+}
+#checkinTable tbody td{border-color:#dce6f3;color:#1c2c4e;background:#fff}
+#checkinTable tbody tr:nth-child(even) td{background:#f2f7ff}
+.checked td{font-weight:800!important;color:#08769a!important;background:#e5fbff!important}
+.filter-input{width:100%;font-size:.78rem;padding:5px 7px;border:1px solid #cbd7e8;border-radius:7px;text-align:center;margin-top:5px}
+.small-text{font-size:.84rem;color:inherit}
+#checkinTable th:first-child,#checkinTable th:nth-child(5),#checkinTable td:first-child,#checkinTable td:nth-child(5){vertical-align:middle!important;text-align:center!important;white-space:nowrap}
+#checkinTable th:first-child,#checkinTable td:first-child{position:sticky;left:0;z-index:5;white-space:nowrap;min-width:110px}
+#checkinTable th:nth-child(5),#checkinTable td:nth-child(5){width:160px}
+#checkinTable tbody td:first-child{background:#fff!important}
+#checkinTable tbody tr:nth-child(even) td:first-child{background:#f2f7ff!important}
+#checkinTable tbody tr.checked td:first-child{background:#e5fbff!important}
+#checkinTable thead th:first-child{z-index:8!important;background:#061b4b!important}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:30px 20px 42px;text-align:center;color:#9fb0d4;background:transparent;font-size:.92rem;margin-top:0}
+@media(max-width:980px){
+  .nav-links{position:fixed;left:20px;right:20px;top:112px;display:none;flex-direction:column;align-items:stretch;background:rgba(3,9,31,.98);padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}.nav-links a{text-align:center}.menu-btn{display:block}
+}
+@media(max-width:720px){
+  .container{width:min(100% - 24px,1160px)}
+  .brand-title-only{max-width:calc(100% - 56px)}
+  .forum-brand-title{font-size:clamp(.88rem,4vw,1.05rem);letter-spacing:.025em}
+  .forum-brand-line{max-width:250px;margin-top:5px;height:1.5px}
+  .checkin-hero{padding:52px 0 28px}
+  .filter-input{font-size:.72rem}
+}
 </style>
 </head>
 <body>
 
-<!-- ====== 彈窗翻牌倒數 ====== -->
-<div id="overlay">
-  <h2 style="font-size:2rem;font-weight:700;">🚫 114年度主治醫師暨臨床教師餐敘尚未開放報到</h2>
-  <p>報到將於 <b>11 月 28 日 17:30</b> 開始</p>
-  <div class="flip-clock">
-    <div class="flip-unit"><div class="number" id="flip-h">00</div><div class="label">時</div></div>
-    <div class="flip-unit"><div class="number" id="flip-m">00</div><div class="label">分</div></div>
-    <div class="flip-unit"><div class="number" id="flip-s">00</div><div class="label">秒</div></div>
-  </div>
-</div>
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">佳里奇美醫院114年度餐敘</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-        <li class="nav-item"><a class="nav-link" href="schedule.html">活動流程</a></li>
-        <li class="nav-item"><a class="nav-link" href="teachers.html">教師芳名錄</a></li>
-        <li class="nav-item"><a class="nav-link active" href="checkin.html">報到系統</a></li>
-        <li class="nav-item"><a class="nav-link" href="survey.html">滿意度調查</a></li>
-      </ul>
-    </div>
+<div class="announcement">
+  主辦單位：奇美醫療財團法人奇美醫院 × 財團法人資訊工業策進會｜活動日期：<strong>2026/8/11</strong>
+</div>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand-title-only" href="index.html" aria-label="回到首頁">
+      <span class="forum-brand">
+        <span class="forum-brand-title">智慧人才培育高峰論壇</span>
+        <span class="forum-brand-line" aria-hidden="true"></span>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主要導覽">
+      <a href="index.html">活動資訊</a>
+      <a class="active" href="checkin.html">簽到入場</a>
+      <a href="agenda.html">活動議程</a>
+      <a href="https://forms.cloud.microsoft/r/TLJWZ570Xu" target="_blank" rel="noopener noreferrer">即時提問</a>
+      <a href="https://forms.cloud.microsoft/r/yjrtRR4Qs7" target="_blank" rel="noopener noreferrer">滿意度調查</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟選單">☰</button>
   </div>
-</nav>
+</header>
+<section class="checkin-hero">
+  <div class="container">
+    <div class="hero-kicker">ON-SITE CHECK-IN</div>
+    <h1>簽到入場</h1>
+    <p>請與會貴賓依身分別完成現場報到，報到資訊將即時更新。</p>
+  </div>
+</section>
 
 <main class="container" style="padding-top:100px;">
-<!-- 報到表單 -->
-<div class="text-center mb-5">
-  <h2>📝 線上報到表單</h2>
-  <p class="text-dark">請與會人員於現場填寫下方表單進行報到</p>
+
+
+
+<div class="credit-alert" role="alert">
+  <div>本論壇已成功申請<strong>西醫師、藥師、醫事放射師、醫事檢驗師、營養師</strong>繼續教育學分。</div>
+  <div><span class="paper">藥師、醫事放射師及營養師：</span>如需取得學分，請務必於報到處完成<strong>紙本簽到及簽退</strong>。</div>
+  <div><span class="online">西醫師及醫事檢驗師：</span>如需取得學分，完成本頁<strong>線上簽到</strong>即可，謝謝。</div>
 </div>
 
 <div class="card mb-4 p-4" style="max-width:700px;margin:auto;">
@@ -134,17 +178,38 @@ footer { text-align:center; color:#555; background: rgba(255,255,255,0.1); paddi
       <label class="form-label">身分別</label>
       <select name="identity" class="form-control" id="identitySelect" required>
         <option value="">請選擇</option>
-        <option value="院內人員">院內人員</option>
-        <option value="院外嘉賓">院外嘉賓（含未完成報名）</option>
+        <option value="院內人員">院內人員（含未事先報名）</option>
+        <option value="院外嘉賓">院外嘉賓</option>
       </select>
     </div>
-    <div class="mb-3" id="internalField" style="display:none;">
-      <label class="form-label">人事號（院內人員專用，英文字母需大寫）</label>
-      <input type="text" name="internal" class="form-control" placeholder="輸入人事號">
+    <div id="internalField" style="display:none;">
+      <div class="mb-3">
+        <label class="form-label">姓名</label>
+        <input type="text" name="internalName" class="form-control" placeholder="請輸入姓名" autocomplete="name">
+        <div class="small-text mt-2" style="color:#bafaff;">已事先報名者將優先以姓名比對報名資料；未事先報名者也可直接填寫並完成現場報到。</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">人事號（院內人員專用，英文字母大小寫皆可）</label>
+        <input type="text" name="internal" class="form-control" placeholder="輸入人事號" autocomplete="off">
+      </div>
     </div>
    <div class="mb-3" id="externalField" style="display:none;">
-      <label class="form-label">嘉賓姓名</label>
-      <input type="text" name="external" class="form-control" placeholder="輸入姓名">
+      <label class="form-label">姓名</label>
+      <input type="text" name="external" class="form-control" placeholder="請輸入姓名" autocomplete="name">
+      <div class="small-text mt-2" style="color:#bafaff;">已事先報名者將優先以姓名比對報名資料；未事先報名者也可直接填寫並完成現場報到。</div>
+    </div>
+    <div class="mb-3 credit-question">
+      <label class="form-label">您是否有西醫師或醫檢師學會學分之需求？(藥師、放射師、營養師需紙本簽到簽退)</label>
+      <div class="credit-options">
+        <label class="credit-option"><input type="radio" name="creditNeed" value="西醫師" required> <span>是，西醫師</span></label>
+        <label class="credit-option"><input type="radio" name="creditNeed" value="醫檢師" required> <span>是，醫檢師</span></label>
+        <label class="credit-option"><input type="radio" name="creditNeed" value="無" required> <span>否，兩者皆無需求</span></label>
+      </div>
+    </div>
+    <div class="mb-3" id="licenseField">
+      <label class="form-label">您的身分證字號為？</label>
+      <input type="text" name="nationalId" class="form-control" placeholder="請輸入身分證字號" autocomplete="off">
+      <div class="small-text mt-2" style="color:#bafaff;">此資料僅供繼續教育學分申報使用，不會顯示於本頁即時報到名單。</div>
     </div>
     <div class="mb-3">
       <label class="form-label">備註(選填)</label>
@@ -166,7 +231,7 @@ footer { text-align:center; color:#555; background: rgba(255,255,255,0.1); paddi
     <span id="countdown" class="timer"></span>
   </div>
   <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
-    <input id="globalSearch" type="text" class="form-control w-50" placeholder="🔍 全欄搜尋（姓名、科別、單位、狀態）">
+    <input id="globalSearch" type="text" class="form-control w-50" placeholder="🔍 全欄搜尋（姓名、單位、科別、狀態）">
     <button class="refresh-btn" onclick="filterTable()">🔍 搜尋</button>
   </div>
 </div>
@@ -178,17 +243,16 @@ footer { text-align:center; color:#555; background: rgba(255,255,255,0.1); paddi
     <table class="table align-middle text-center" id="checkinTable">
       <thead class="table-dark">
         <tr>
-          <th>序號</th>
-          <th>姓名<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(1,this.value)"></th>
+          <th>姓名<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(0,this.value)"></th>
+          <th>單位<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(1,this.value)"></th>
           <th>科別<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(2,this.value)"></th>
-          <th>單位<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(3,this.value)"></th>
-          <th>狀態<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(4,this.value)"></th>
+          <th>狀態<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(3,this.value)"></th>
           <th>報到時間</th>
-          <th>備註<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(6,this.value)"></th>
+          <th>備註<br><input type="text" class="filter-input" placeholder="篩選" onkeyup="columnFilter(5,this.value)"></th>
         </tr>
       </thead>
       <tbody id="tableBody">
-        <tr><td colspan="7" class="text-center text-muted">資料載入中...</td></tr>
+        <tr><td colspan="6" class="text-center text-muted">資料載入中...</td></tr>
       </tbody>
     </table>
   </div>
@@ -197,110 +261,78 @@ footer { text-align:center; color:#555; background: rgba(255,255,255,0.1); paddi
 </main>
 
 <footer>
-© 2025 佳里奇美醫院．教學研究組 | Designed for 114年度餐敘
+© 2026 智慧人才培育高峰論壇｜奇美醫療財團法人奇美醫院 × 財團法人資訊工業策進會
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 // ------------------------
-// 泡泡動畫背景
+// 設定與資料處理
 // ------------------------
-const bubbleColors=['#E6E6FA','#D8BFD8','#F0F8FF','#DDA0DD','#DA70D6','#9370DB'];
-const bubbles=[]; const bubbleCount=40;
-let width=window.innerWidth, height=window.innerHeight;
-for(let i=0;i<bubbleCount;i++){
-  let b=document.createElement('div'); b.classList.add('bubble');
-  let size=Math.random()*40+20;
-  b.style.width=size+'px'; b.style.height=size+'px';
-  b.style.left=Math.random()*width+'px'; b.style.top=Math.random()*height+'px';
-  b.style.background=bubbleColors[Math.floor(Math.random()*bubbleColors.length)];
-  document.body.appendChild(b);
-  bubbles.push({el:b,x:parseFloat(b.style.left),y:parseFloat(b.style.top),dx:(Math.random()-0.5)*0.5,dy:-Math.random()*0.7-0.2});
-}
-function animateBubbles(){ bubbles.forEach(b=>{ b.x+=b.dx;b.y+=b.dy;
-  if(b.y+parseFloat(b.el.style.height)<0){b.y=height;b.x=Math.random()*width;}
-  if(b.x<0)b.x=width;if(b.x>width)b.x=0;
-  b.el.style.left=b.x+'px';b.el.style.top=b.y+'px';
-}); requestAnimationFrame(animateBubbles); }
-animateBubbles();
-window.addEventListener('resize',()=>{width=window.innerWidth;height=window.innerHeight;});
-
-// ------------------------
-// 報到與倒數
-// ------------------------
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyT8PHxSadUi-cL2B-kDpN9DkqqRopc7QLMaXDrgNziv-Jsj9jZ7EqtPTFQT_FhFadz/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby6J3Xx5ZA8gzho_v2DS6N1agZpQxwMI342qlXT-9y15I17pI9CzdgTxEh-xIlnwPXD/exec";
 const tableBody = document.getElementById('tableBody');
+const countdownEl = document.getElementById('countdown');
 const statsEl = document.getElementById('stats');
 const formMessage = document.getElementById('formMessage');
-const overlay = document.getElementById('overlay');
+let counter=20;
 
+// 院內/院外欄位切換
 const identitySelect = document.getElementById('identitySelect');
 const internalField = document.getElementById('internalField');
 const externalField = document.getElementById('externalField');
+const internalNameInput = formInternalName = document.querySelector('input[name="internalName"]');
+const internalNoInput = formInternalNo = document.querySelector('input[name="internal"]');
+const externalNameInput = formExternalName = document.querySelector('input[name="external"]');
 
-let counter=20;
-const openTime = new Date("2025-11-28T17:30:00+08:00"); // 開放時間
-
-// ------------------------
-// 翻牌倒數動畫
-// ------------------------
-function updateCountdown() {
-  const now = new Date();
-  const diff = openTime - now;
-  if(diff <= 0){
-    overlay.style.display = 'none';
-    document.querySelector("#customCheckinForm button[type='submit']").disabled = false;
-    return;
-  }
-  overlay.style.display = 'flex';
-
-  const hours = Math.floor(diff / 3600000);
-  const mins = Math.floor((diff % 3600000) / 60000);
-  const secs = Math.floor((diff % 60000) / 1000);
-
-  ['flip-h','flip-m','flip-s'].forEach((id,i)=>{
-    let num = [hours,mins,secs][i];
-    const el = document.getElementById(id);
-    if(el.textContent != String(num).padStart(2,'0')){
-      el.textContent = String(num).padStart(2,'0');
-      el.style.animation = 'none';
-      void el.offsetWidth; // 重新觸發動畫
-      el.style.animation = 'flip 0.7s ease';
-    }
-  });
-
-  document.querySelector("#customCheckinForm button[type='submit']").disabled = true;
-}
-
-// 每秒更新倒數
-setInterval(()=>{
-  updateCountdown();
-},1000);
-
-// ------------------------
-// 院內/院外切換
-// ------------------------
 identitySelect.addEventListener('change', ()=>{
-  if(identitySelect.value==='院內人員'){ internalField.style.display='block'; externalField.style.display='none'; }
-  else if(identitySelect.value==='院外嘉賓'){ internalField.style.display='none'; externalField.style.display='block'; }
-  else{ internalField.style.display = externalField.style.display='none'; }
+  const isInternal = identitySelect.value==='院內人員';
+  const isExternal = identitySelect.value==='院外嘉賓';
+
+  internalField.style.display = isInternal ? 'block' : 'none';
+  externalField.style.display = isExternal ? 'block' : 'none';
+
+  internalNameInput.required = isInternal;
+  internalNoInput.required = isInternal;
+  externalNameInput.required = isExternal;
+
+  if(!isInternal){
+    internalNameInput.value='';
+    internalNoInput.value='';
+  }
+  if(!isExternal){
+    externalNameInput.value='';
+  }
 });
 
-// ------------------------
+// 繼續教育學分需求欄位切換
+const creditRadios = document.querySelectorAll('input[name="creditNeed"]');
+const licenseField = document.getElementById('licenseField');
+const nationalIdInput = formNationalId = document.querySelector('input[name="nationalId"]');
+creditRadios.forEach(radio=>{
+  radio.addEventListener('change',()=>{
+    const needsId = radio.checked && (radio.value==='西醫師' || radio.value==='醫檢師');
+    licenseField.style.display = needsId ? 'block' : 'none';
+    nationalIdInput.required = needsId;
+    if(!needsId) nationalIdInput.value='';
+  });
+});
+
 // 表單送出
-// ------------------------
 const form = document.getElementById('customCheckinForm');
 form.addEventListener('submit', async e=>{
   e.preventDefault();
-  const now = new Date();
-  if(now < openTime) return;
-
   const identity = form.querySelector('[name="identity"]').value;
-  const internal = form.querySelector('[name="internal"]').value;
-  const external = form.querySelector('[name="external"]').value;
-  const remark = form.querySelector('[name="remark"]').value;
-  const data = new URLSearchParams({identity, internal, external, remark});
+  const internalName = form.querySelector('[name="internalName"]').value.trim();
+  const internal = form.querySelector('[name="internal"]').value.trim().toUpperCase();
+  const external = form.querySelector('[name="external"]').value.trim();
+  const name = identity==='院內人員' ? internalName : external;
+  const creditNeed = form.querySelector('[name="creditNeed"]:checked')?.value || '';
+  const nationalId = form.querySelector('[name="nationalId"]').value.trim().toUpperCase();
+  const remark = form.querySelector('[name="remark"]').value.trim();
+
+  // 同時送出 name 與既有欄位，方便後端改為「姓名優先比對」並兼容原本資料結構。
+  const data = new URLSearchParams({identity, name, internalName, internal, external, creditNeed, nationalId, remark});
 
   try{
     const res = await fetch(WEB_APP_URL, { method:'POST', body:data });
@@ -310,9 +342,14 @@ form.addEventListener('submit', async e=>{
       formMessage.className="mt-2 text-success text-center";
       form.reset();
       internalField.style.display = externalField.style.display = 'none';
+      licenseField.style.display = 'none';
+      internalNameInput.required = false;
+      internalNoInput.required = false;
+      externalNameInput.required = false;
+      nationalIdInput.required = false;
       fetchCheckinData();
     } else if(result.status==='not_found'){
-      formMessage.textContent="⚠️ 查無此人或已報到";
+      formMessage.textContent="⚠️ 查無既有報名資料或已報到；若為未事先報名者，請確認後端已啟用現場新增功能";
       formMessage.className="mt-2 text-warning text-center";
     } else {
       formMessage.textContent="❌ 系統錯誤，請稍後再試";
@@ -325,16 +362,22 @@ form.addEventListener('submit', async e=>{
   }
 });
 
-// ------------------------
+// 姓名隱私遮蔽：保留首尾字，中間以 * 取代
+function maskName(name){
+  const chars = Array.from((name || '').trim());
+  if(chars.length <= 1) return chars.join('');
+  if(chars.length === 2) return chars[0] + '*';
+  return chars[0] + '*'.repeat(chars.length - 2) + chars[chars.length - 1];
+}
+
 // 即時名單
-// ------------------------
 async function fetchCheckinData(){
   try{
-    tableBody.innerHTML=`<tr><td colspan="7" class="text-center text-muted">資料更新中...</td></tr>`;
+    tableBody.innerHTML=`<tr><td colspan="6" class="text-center text-muted">資料更新中...</td></tr>`;
     const res = await fetch(WEB_APP_URL);
     const data = await res.json();
-    if(!data||data.length===0){
-      tableBody.innerHTML=`<tr><td colspan="7" class="text-center text-muted">目前尚無報到資料</td></tr>`;
+    if(!data||data.length===0){ 
+      tableBody.innerHTML=`<tr><td colspan="6" class="text-center text-muted">目前尚無報到資料</td></tr>`;
       statsEl.textContent='';
       return;
     }
@@ -346,10 +389,9 @@ async function fetchCheckinData(){
       const row=document.createElement('tr');
       const isChecked=p.status==='已報到';
       if(isChecked){checked++; row.classList.add('checked');}
-      row.innerHTML=`<td>${i+1}</td>
-      <td>${p.name||''}</td>
-      <td>${p.department||''}</td>
+      row.innerHTML=`<td>${maskName(p.name)}</td>
       <td>${p.unit||''}</td>
+      <td>${p.department||''}</td>
       <td>${p.status||'未報到'}</td>
       <td class="small-text">${p.time?new Date(p.time).toLocaleString():'—'}</td>
       <td>${p.remark||''}</td>`;
@@ -359,14 +401,12 @@ async function fetchCheckinData(){
     statsEl.innerHTML=`總報名人數：${total} | 已報到：${checked} / 未報到：${total-checked} | 出席率：${rate}%`;
   }catch(err){
     console.error(err);
-    tableBody.innerHTML=`<tr><td colspan="7" class="text-danger">⚠️ 資料載入失敗</td></tr>`;
+    tableBody.innerHTML=`<tr><td colspan="6" class="text-danger">⚠️ 資料載入失敗</td></tr>`;
   }
   counter=20;
 }
 
-// ------------------------
-// 全欄篩選
-// ------------------------
+// 欄位篩選
 function columnFilter(colIndex,value){
   const rows=tableBody.getElementsByTagName('tr');
   const filter=value.toLowerCase();
@@ -384,17 +424,19 @@ function filterTable(){
   }
 }
 
-// ------------------------
 // 自動更新名單
-// ------------------------
-setInterval(()=>{
-  counter--;
-  if(counter<=0) fetchCheckinData();
-},1000);
-
-// 初始載入
-updateCountdown();
+setInterval(()=>{ counter--; if(counter<=0)fetchCheckinData(); countdownEl.textContent=`⏳ ${counter} 秒後自動更新`; },1000);
 fetchCheckinData();
+</script>
+
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+if(menuBtn && navLinks){
+  menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+}
 </script>
 
 </body>
