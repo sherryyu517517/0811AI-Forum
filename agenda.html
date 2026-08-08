@@ -503,7 +503,7 @@ a{color:inherit}
   .reveal{opacity:1;transform:none}
 }
 
-/* 簽到入場：2026/8/11 11:30（台灣時間）前鎖定 */
+/* 簽到入場：2026/8/11 12:00（台灣時間）前鎖定 */
 .checkin-link.locked{
   opacity:.58;
   cursor:not-allowed;
@@ -748,8 +748,8 @@ backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}))
   const checkinLink = document.getElementById('checkinLink');
   if (!checkinLink) return;
 
-  // 2026/08/11 11:30 台灣時間（UTC+8）
-  const checkinOpenTime = new Date('2026-08-11T11:30:00+08:00');
+  // 2026/08/11 12:00 台灣時間（UTC+8）
+  const checkinOpenTime = new Date('2026-08-11T12:00:00+08:00');
 
   function updateCheckinLink() {
     const isOpen = new Date() >= checkinOpenTime;
@@ -765,14 +765,14 @@ backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}))
       checkinLink.classList.add('locked');
       checkinLink.classList.remove('open');
       checkinLink.setAttribute('aria-disabled', 'true');
-      checkinLink.title = '簽到將於 2026/8/11 11:30 開放';
+      checkinLink.title = '簽到將於 2026/8/11 12:00 開放';
     }
   }
 
   checkinLink.addEventListener('click', function (event) {
     if (new Date() < checkinOpenTime) {
       event.preventDefault();
-      alert('簽到將於 2026/8/11 11:30 開放。');
+      alert('簽到將於 2026/8/11 12:00 開放。');
     }
   });
 
