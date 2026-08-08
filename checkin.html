@@ -235,7 +235,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:30px 20px 42px;text-al
 
 
 <div class="meal-inventory" id="mealInventoryPanel">
-  🍱 現場備用餐盒：<span class="meal-count" id="mealInventoryText">剩餘數量由系統即時判斷</span>
+  🍱 現場備用餐券：<span class="meal-count" id="mealInventoryText">剩餘數量由系統即時判斷</span>
   <div class="small-text mt-1">供未事先報名者使用（院內、院外共用），依現場報到順序提供，共 20 份。</div>
 </div>
 
@@ -409,7 +409,7 @@ form.addEventListener('submit', async e=>{
       if(result.mealStatus === 'registered'){
         formMessage.innerHTML =
           '✅ 報到完成' +
-          '<span class="meal-main">🍱 可發餐盒</span>' +
+          '<span class="meal-main">🍱 可發餐券</span>' +
           '已事先報名';
         formMessage.className = 'meal-result meal-yes show';
 
@@ -417,10 +417,10 @@ form.addEventListener('submit', async e=>{
         const remaining = (result.reserveRemaining ?? '');
         formMessage.innerHTML =
           '✅ 報到完成' +
-          '<span class="meal-main">🍱 可發餐盒</span>' +
-          '未事先報名－使用現場備用餐盒<br>' +
+          '<span class="meal-main">🍱 可發餐券</span>' +
+          '未事先報名－使用現場備用餐券<br>' +
           '第 <strong>' + result.reserveNumber + ' / 20</strong> 份' +
-          (remaining !== '' ? '<br>備用餐盒剩餘 <strong>' + remaining + '</strong> 份' : '');
+          (remaining !== '' ? '<br>備用餐券剩餘 <strong>' + remaining + '</strong> 份' : '');
         formMessage.className = 'meal-result meal-yes show';
 
         if(mealInventoryText && remaining !== ''){
@@ -430,8 +430,8 @@ form.addEventListener('submit', async e=>{
       }else if(result.mealStatus === 'no_meal'){
         formMessage.innerHTML =
           '✅ 已完成現場報到' +
-          '<span class="meal-main">🚫 不發餐盒</span>' +
-          '未事先報名，20 份現場備用餐盒已全數使用';
+          '<span class="meal-main">🚫 不發餐券</span>' +
+          '未事先報名，20 份現場備用餐券已全數使用';
         formMessage.className = 'meal-result meal-no show';
 
         if(mealInventoryText){
@@ -441,7 +441,7 @@ form.addEventListener('submit', async e=>{
       }else if(result.mealStatus === 'already_issued'){
         formMessage.innerHTML =
           '⚠️ 此人已完成報到' +
-          '<span class="meal-main">請勿重複發放餐盒</span>' +
+          '<span class="meal-main">請勿重複發放餐券</span>' +
           '請確認後再進行下一位報到';
         formMessage.className = 'meal-result meal-used show';
 
