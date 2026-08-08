@@ -90,12 +90,8 @@ a{color:inherit}
 .nav-links a:hover,.nav-links a.active{background:rgba(82,230,243,.12);color:#95f7ff}
 .menu-btn{
   display:none;width:76px;height:46px;border-radius:13px;border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.06);color:#fff;
-  flex-direction:row;align-items:center;justify-content:center;gap:6px;
-  line-height:1
+  background:rgba(255,255,255,.06);color:#fff;font-size:1.2rem
 }
-.menu-icon{font-size:1.25rem;line-height:1}
-.menu-label{font-size:.78rem;font-weight:800;letter-spacing:.04em;line-height:1.15;margin-top:0}
 
 /* 簽到入場：比照舊 index 的紅色箭頭閃爍 */
 .checkin-link{padding-left:27px!important}
@@ -226,7 +222,7 @@ a{color:inherit}
   }
   .nav-links.open{display:flex}
   .nav-links a{text-align:center;font-size:.95rem}
-  .menu-btn{display:flex}
+  .menu-btn{display:block}
   .checkin-link{padding-left:11px!important}
   .checkin-link::before{left:calc(50% - 57px)}
   .info-grid{grid-template-columns:1fr}
@@ -398,7 +394,7 @@ a{color:inherit}
       <a href="https://forms.cloud.microsoft/r/TLJWZ570Xu" target="_blank" rel="noopener noreferrer">即時提問</a>
       <a href="https://forms.cloud.microsoft/r/yjrtRR4Qs7" target="_blank" rel="noopener noreferrer">滿意度調查</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟選單"><span class="menu-icon">☰</span><span class="menu-label">選單</span></button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟選單">☰ 選單</button>
   </div>
 </header>
 
@@ -414,7 +410,7 @@ a{color:inherit}
         <span>奇美醫院第五醫療大樓 5 樓國際會議廳</span>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="agenda(1).html">查看完整議程</a>
+        <a class="btn btn-primary" href="agenda.html">查看完整議程</a>
         <a class="btn btn-secondary" href="#speakers">認識講者</a>
       </div>
     </div>
@@ -552,7 +548,7 @@ a{color:inherit}
         <div class="card-label">INTERACTIVE</div>
         <h3>現場即時互動</h3>
         <p>活動進行中可透過「即時提問」送出問題，讓您的問題有機會在論壇交流與討論環節中被回應。</p>
-        <a class="btn btn-secondary" href="question.html">前往即時提問</a>
+        <a class="btn btn-secondary" href="https://forms.cloud.microsoft/r/TLJWZ570Xu" target="_blank" rel="noopener noreferrer">前往即時提問</a>
       </div>
     </div>
   </section>
@@ -586,13 +582,12 @@ const menuBtn=document.getElementById('menuBtn');
 const navLinks=document.getElementById('navLinks');
 menuBtn?.addEventListener('click',()=>{
   navLinks.classList.toggle('open');
-  const menuIcon=menuBtn.querySelector('.menu-icon');
-  if(menuIcon) menuIcon.textContent=navLinks.classList.contains('open')?'✕':'☰';
+  menuBtn.textContent=navLinks.classList.contains('open')?'✕':'☰ 選單';
 });
 navLinks?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   if(a.id!=='checkinLink'){
     navLinks.classList.remove('open');
-    if(menuBtn){ const menuIcon=menuBtn.querySelector('.menu-icon'); if(menuIcon) menuIcon.textContent='☰'; }
+    if(menuBtn) menuBtn.textContent='☰ 選單';
   }
 }));
 
