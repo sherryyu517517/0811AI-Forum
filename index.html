@@ -370,6 +370,62 @@ a{color:inherit}
 }
 .eco-reminder strong{color:#fff0a8}
 
+
+.media-notice{
+  max-width:1040px;
+  margin:18px auto 0;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:18px 20px;
+  border:1px solid rgba(255,209,120,.34);
+  border-radius:18px;
+  background:
+    linear-gradient(135deg,rgba(255,209,120,.10),rgba(82,230,243,.08)),
+    rgba(7,25,74,.58);
+  box-shadow:0 14px 38px rgba(3,9,31,.16);
+}
+.media-notice-icon{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  background:linear-gradient(135deg,#ffd178,#52e6f3);
+  color:#06113c;
+  font-size:1.25rem;
+  box-shadow:0 8px 22px rgba(82,230,243,.16);
+}
+.media-notice-body{min-width:0}
+.media-notice-title{
+  margin:0 0 7px;
+  color:#fff0a8;
+  font-size:1.03rem;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+.media-notice-text{
+  margin:0;
+  color:#dbe8ff;
+  line-height:1.8;
+  font-size:.95rem;
+}
+.media-notice-text strong{color:#fff}
+.media-notice-action{
+  display:block;
+  margin-top:5px;
+  color:#bafaff;
+  font-weight:800;
+}
+@media(max-width:720px){
+  .media-notice{padding:16px;gap:12px}
+  .media-notice-icon{width:40px;height:40px}
+  .media-notice-text{font-size:.91rem}
+}
+
+
 </style>
 </head>
 <body>
@@ -444,6 +500,18 @@ a{color:inherit}
       <div class="eco-reminder reveal">
         ♻️ <span>為響應環保及永續，<strong>敬請自備保溫杯</strong>，共同減少一次性用品使用。</span>
       </div>
+
+      <div class="media-notice reveal" role="note" aria-label="活動影像拍攝與直播說明">
+        <div class="media-notice-icon" aria-hidden="true">●</div>
+        <div class="media-notice-body">
+          <h3 class="media-notice-title">活動影像拍攝與直播說明</h3>
+          <p class="media-notice-text">
+            本活動將進行<strong>攝影及錄影</strong>，相關照片及影音內容可能使用於奇美醫院活動紀錄、官方網站、社群媒體及相關宣傳用途。
+            <span class="media-notice-action">如您不希望被拍攝或入鏡，請於活動當日報到時主動告知工作人員，我們將協助安排適當座位或提供相關協助。</span>
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
